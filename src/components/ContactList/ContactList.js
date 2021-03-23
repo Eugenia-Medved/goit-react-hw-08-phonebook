@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, ListItem, List } from '@material-ui/core';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { contactsOperations, contactsSelector } from '../../redux/contacts';
@@ -8,21 +9,23 @@ import PhoneList from './fade.module.css';
 
 function ContactList({ items, onDeleteNumber }) {
   return (
-    <TransitionGroup component="ol" className={s.list}>
+    <TransitionGroup component={List}>
       {items.map(item => (
         <CSSTransition key={item.id} timeout={250} classNames={PhoneList}>
-          <li key={item.id} className={s.item}>
+          <ListItem key={item.id} className={s.item}>
             <span>
-              {item.name}:{item.number}
+              {item.name}:<span> </span>
+              {item.number}
             </span>
-            <button
-              className={s.button}
+            <Button
               type="button"
+              variant="contained"
+              color="secondary"
               onClick={() => onDeleteNumber(item.id)}
             >
               Delete
-            </button>
-          </li>
+            </Button>
+          </ListItem>
         </CSSTransition>
       ))}
     </TransitionGroup>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Box, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { toast } from 'react-toastify';
@@ -10,7 +11,7 @@ import {
   contactsSelector,
   contactsOperations,
 } from '../../redux/contacts';
-import Container from 'components/Container';
+// import Container from 'components/Container';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList';
@@ -29,25 +30,30 @@ class PhoneBookPage extends Component {
   render() {
     return (
       <>
-        <Container>
-          <CSSTransition
-            in={true}
-            appear={true}
-            timeout={250}
-            classNames="Logo"
-            unmountOnExit
-          >
-            <h1>Phonebook</h1>
-          </CSSTransition>
-          <ContactForm />
-        </Container>
-        <Container title="Contacts">
-          <Filter />
-          {this.props.loading && (
-            <Loader type="Rings" color="#00BFFF" height={200} width={200} />
-          )}
-          <ContactList />
-        </Container>
+        <Grid container direction="row" justify="center" alignItems="baseline">
+          <Container maxWidth="sm">
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={250}
+              classNames="Logo"
+              unmountOnExit
+            >
+              <h1>Phonebook</h1>
+            </CSSTransition>
+            <ContactForm />
+
+            <Box m={1}>
+              <Filter />
+            </Box>
+          </Container>
+          <Container maxWidth="sm">
+            {this.props.loading && (
+              <Loader type="Rings" color="#00BFFF" height={200} width={200} />
+            )}
+            <ContactList />
+          </Container>
+        </Grid>
       </>
     );
   }

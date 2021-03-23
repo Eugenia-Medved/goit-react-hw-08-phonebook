@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Button, Input, Box, FormLabel } from '@material-ui/core';
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { contactsOperations, contactsSelector } from '../../redux/contacts';
-import s from './ContactForm.module.css';
+// import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
@@ -43,26 +44,30 @@ class ContactForm extends Component {
     const telId = shortid.generate();
 
     return (
-      <form className={s.form} onSubmit={this.handleSubmit}>
-        <label for={nameId}> Name </label>
-        <input
-          className={s.input}
-          id={nameId}
-          type="text"
-          value={name}
-          onChange={this.handleChangeName}
-        />
-        <label for={telId}> Number </label>
-        <input
-          className={s.input}
-          id={telId}
-          type="text"
-          value={number}
-          onChange={this.handleChangeNumber}
-        />
-        <button className={s.button} type="submit">
+      <form onSubmit={this.handleSubmit}>
+        <Box m={1}>
+          <FormLabel for={nameId}> Name </FormLabel>
+          <Input
+            color="secondary"
+            // className={s.input}
+            id={nameId}
+            type="text"
+            value={name}
+            onChange={this.handleChangeName}
+          />
+          <FormLabel for={telId}> Number </FormLabel>
+          <Input
+            color="secondary"
+            // className={s.input}
+            id={telId}
+            type="text"
+            value={number}
+            onChange={this.handleChangeNumber}
+          />
+        </Box>
+        <Button type="submit" variant="contained" color="secondary">
           Add contact
-        </button>
+        </Button>
       </form>
     );
   }

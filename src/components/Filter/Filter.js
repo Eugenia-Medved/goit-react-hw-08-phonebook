@@ -1,16 +1,15 @@
 import shortid from 'shortid';
+import { Input, FormLabel } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { changeFilter, contactsSelector } from '../../redux/contacts';
-
-import s from './Filter.module.css';
 
 function Filter({ value, onChange }) {
   const findId = shortid.generate();
   return (
     <>
-      <label for={findId}>Find contacts by name</label>
-      <input
-        className={s.input}
+      <FormLabel for={findId}>Find contacts by name</FormLabel>
+      <Input
+        color="secondary"
         id={findId}
         type="text"
         value={value}

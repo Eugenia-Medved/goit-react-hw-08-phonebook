@@ -19,21 +19,6 @@
   transition: all 0.3s ease-out;
 }
 
-.item:before {
-  content: counter(li);
-  counter-increment: li;
-  position: absolute;
-  left: -2.5em;
-  top: 50%;
-  margin-top: -1em;
-  background: #9097a2;
-  height: 2em;
-  width: 2em;
-  line-height: 2em;
-  text-align: center;
-  font-weight: bold;
-}
-
 .button {
   text-decoration: none;
   display: inline-block;

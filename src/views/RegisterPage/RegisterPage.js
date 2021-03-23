@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Button, Input, Box, FormLabel, Container } from '@material-ui/core';
+
 import { connect } from 'react-redux';
+
 import { authOperations } from '../../redux/auth';
 
 class RegisterView extends Component {
@@ -25,43 +28,55 @@ class RegisterView extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div>
+      <Container maxWidth="sm">
         <h1>Страница регистрации</h1>
 
-        <form onSubmit={this.handleSubmit} autoComplete="off">
-          <label>
-            Имя
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label>
-            Почта
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label>
-            Пароль
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button type="submit">Зарегистрироваться</button>
+        <form autoComplete="off" onClick={this.handleSubmit}>
+          <Box display="flex">
+            <Box m={1}>
+              <FormLabel>Имя</FormLabel>
+            </Box>
+            <Box width="400">
+              <Input
+                color="secondary"
+                type="text"
+                name="name"
+                value={name}
+                onChange={this.handleChange}
+              />
+            </Box>
+            <Box m={1}>
+              <FormLabel>Почта</FormLabel>
+            </Box>
+            <Box width="400">
+              <Input
+                color="secondary"
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </Box>
+            <Box m={1}>
+              <FormLabel>Пароль</FormLabel>
+            </Box>
+            <Box width="400">
+              <Input
+                color="secondary"
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </Box>
+          </Box>
+          <Box m={1}>
+            <Button type="submit" variant="contained" color="secondary">
+              Зарегистрироваться
+            </Button>
+          </Box>
         </form>
-      </div>
+      </Container>
     );
   }
 }
