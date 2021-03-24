@@ -28,7 +28,11 @@ class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = this.state;
 
-    if (this.props.contacts.find(contact => contact.name === name)) {
+    if (
+      this.props.contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase(),
+      )
+    ) {
       console.log(name);
       toast.error(`${name} is already in contacts!!!`);
       return;
